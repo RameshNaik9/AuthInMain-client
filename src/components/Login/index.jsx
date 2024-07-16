@@ -14,7 +14,7 @@ const Login = () => {
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		try {
-			const url = "https://authinmern-server.azurewebsites.net/api/auth"; // Updated URL
+			const url = "https://authinmernserver.azurewebsites.net/api/auth"; // Updated URL
 			const { data: res } = await axios.post(url, data);
 			localStorage.setItem("token", res.data);
 			window.location = "/";

@@ -20,7 +20,7 @@ const Signup = () => {
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		try {
-			const url = "https://authinmern-server.azurewebsites.net/api/users"; // Updated URL
+			const url = "https://authinmernserver.azurewebsites.net/api/users"; // Updated URL
 			const { data: res } = await axios.post(url, data);
 			navigate("/login");
 			console.log(res.message);
