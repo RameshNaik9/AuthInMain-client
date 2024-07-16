@@ -24,12 +24,14 @@ jobs:
         run: npm install
       - name: Build frontend
         run: npm run build
+      - name: Archive production artifacts
+        run: zip -r build.zip ./build
       - name: Deploy to Azure Web App
         uses: azure/webapps-deploy@v2
         with:
           app-name: AuthInMern-client # replace with your Azure Web App name
-          slot-name: "production"
           publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
+          package: build.zip
 
   close_pull_request_frontend:
     if: github.event_name == 'pull_request' && github.event.action == 'closed'
